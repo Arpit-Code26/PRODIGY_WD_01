@@ -1,0 +1,237 @@
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+nav#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 179, 71, 0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+nav#navbar.scrolled {
+  background: rgba(255, 127, 80, 0.95);
+  box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+  backdrop-filter: saturate(200%) blur(15px);
+}
+
+nav#navbar ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav#navbar li {
+  margin: 0 24px;
+}
+
+nav#navbar a {
+  display: block;
+  padding: 20px 18px;
+  color: #4a2c0a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s, border-bottom 0.3s, background 0.3s;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Hover and active effects for navbar columns */
+nav#navbar a:hover,
+nav#navbar a.active {
+  color: #fff;
+  background: #d2691e;
+  border-bottom: 3px solid #d2691e;
+  border-radius: 8px 8px 0 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav#navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  background-color: #d2691e;
+  transition: width 0.3s ease, left 0.3s ease;
+  border-radius: 2px;
+}
+
+nav#navbar a:hover::after,
+nav#navbar a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Recipe Sections */
+.recipe-section {
+  padding: 120px 20px 60px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  scroll-margin-top: 80px; /* offset for fixed nav */
+}
+
+.recipe-section h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #d2691e;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 1px 1px 3px rgba(210,105,30,0.3);
+}
+
+/* Recipe Cards */
+.recipe-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 36px;
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 127, 80, 0.3);
+}
+
+.recipe-card img {
+  width: 280px;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.recipe-card:hover img {
+  transform: scale(1.05);
+}
+
+.recipe-info {
+  padding: 28px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipe-info h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #b35400;
+  margin-bottom: 12px;
+}
+
+.recipe-info p {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.recipe-info strong {
+  color: #d2691e;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.recipe-info ul, .recipe-info ol {
+  margin: 0 0 16px 20px;
+  padding: 0;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .recipe-card {
+    flex-direction: column;
+  }
+  .recipe-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px 16px 0 0;
+  }
+  .recipe-info {
+    padding: 20px;
+  }
+  nav#navbar ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 64px; /* set a height for the navbar */
+  align-items: stretch; /* make li fill the navbar height */
+}
+
+nav#navbar li {
+  margin: 0 8px;
+  display: flex;
+  align-items: stretch; /* ensure li fills navbar height */
+}
+
+nav#navbar a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 28px;
+  color: #4a2c0a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid transparent;
+  border-radius: 8px 8px 0 0;
+  transition: color 0.3s, border-bottom 0.3s, background 0.3s;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+nav#navbar a:hover,
+nav#navbar a.active {
+  color: #fff;
+  background: #d2691e;
+  border-bottom: 3px solid #d2691e;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Keep your other styles as before */
+
+
+@media (max-width: 480px) {
+  .recipe-section {
+    padding: 100px 10px 40px 10px;
+  }
+  .recipe-info h3 {
+    font-size: 1.5rem;
+  }
+  .recipe-info p, .recipe-info ul, .recipe-info ol {
+    font-size: 0.95rem;
+  }
+}
+  
